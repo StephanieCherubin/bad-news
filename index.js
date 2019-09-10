@@ -1,30 +1,19 @@
 import './news-article.js';
 import { topHeadlinesUrl } from './newsApi.js';
 
-window.addEventListener('load', () => {
-  getNews();
-  registerSW();
+window.addEventListener('load', ()=> {
+  fetchNews();
 });
 
-async function getNews() {
-  const res = await fetch(topHeadlinesUrl);
-  const json = await res.json();
+async function fetchNews() {
+  const result = await fetch(topHeadlinesUrl);
+  const json = await result.json();
 
   const main = document.querySelector('main');
 
   json.articles.forEach(article => {
-    const el = document.createElement('news-article');
-    el.article = article;
-    main.appendChild(el);
+    const element = document.createElement('news-article');
+    element.article = article;
+    main.appendChild(element);
   });
-}
-
-async function registerSW() {
-  if ('serviceWorker' in navigator) {
-    try {
-      await navigator.serviceWorker.register('./sw.js');
-    } catch (e) {
-      console.log(`SW registration failed`);
-    }
-  }
 }

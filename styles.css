@@ -11,12 +11,17 @@ header {
   align-items: center;
   flex-wrap: wrap;
   margin: 16px 0;
+  background-color: black;
+
 }
 
 header h1 {
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 800;
+  font-size: 5em;
   margin: 0;
+  color: rgb(210, 0, 60);
+  font-family: 'News Cycle', sans-serif;
 }
 
 header vaadin-combo-box {
